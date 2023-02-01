@@ -8,13 +8,14 @@ let status = document.getElementById('status');
 let attempt = document.getElementById('attempt');
 let result = document.getElementById('result');
 
+
 const Guess = {
-    min: 0,
+    min: 1,
     max: 10,
     attemptNumber: 0,
     numberDrawn: function randonValue() {
         /* arredondar valor */
-        let valorMedio = Math.round(Math.random() * (this.max - this.min) + this.min);
+        let valorMedio = Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
         console.log("Valor Media " + valorMedio);
         console.log("Numero maximo " + this.max);
         console.log("Numero minimo " + this.min);
@@ -32,9 +33,6 @@ function handleOk(e) {
     e.preventDefault();
     let number1 = document.getElementById('number1').value;
     let number2 = document.getElementById('number2').value;
-
-    console.log(Guess.min);
-    console.log(Guess.max);
  
     if(!number1 || !number2) {
         alert('Digite algum valor!')
@@ -44,19 +42,16 @@ function handleOk(e) {
         Guess.max = number2;
         numberDrawn = Guess.numberDrawn();
         alert('Valores inseridos!')
+        
     }
-    
+    console.log(Guess.min);
+    console.log(Guess.max);
 }
 
 function handleJogar(e){
     e.preventDefault();
     let kick = document.getElementById('kick').value;
-
-    if(!kick) {
-        alert('Digite algum valor!')
-        return;
-    }
-
+    s
     updateAttempt(attempt, ++Guess.attemptNumber)
 
     if(numberDrawn == kick) {
